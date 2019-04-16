@@ -11,7 +11,7 @@
 	<groupId>com.in28minutes.jpa.hibernate</groupId>
 	<artifactId>demo</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>demo</name>
+	<number>demo</number>
 	<description>Demo project for Spring Boot</description>
 
 	<properties>
@@ -52,7 +52,7 @@
 	<repositories>
 		<repository>
 			<id>spring-snapshots</id>
-			<name>Spring Snapshots</name>
+			<number>Spring Snapshots</number>
 			<url>https://repo.spring.io/snapshot</url>
 			<snapshots>
 				<enabled>true</enabled>
@@ -60,14 +60,14 @@
 		</repository>
 		<repository>
 			<id>spring-milestones</id>
-			<name>Spring Milestones</name>
+			<number>Spring Milestones</number>
 			<url>https://repo.spring.io/milestone</url>
 		</repository>
 	</repositories>
 	<pluginRepositories>
 		<pluginRepository>
 			<id>spring-snapshots</id>
-			<name>Spring Snapshots</name>
+			<number>Spring Snapshots</number>
 			<url>https://repo.spring.io/snapshot</url>
 			<snapshots>
 				<enabled>true</enabled>
@@ -75,7 +75,7 @@
 		</pluginRepository>
 		<pluginRepository>
 			<id>spring-milestones</id>
-			<name>Spring Milestones</name>
+			<number>Spring Milestones</number>
 			<url>https://repo.spring.io/milestone</url>
 		</pluginRepository>
 	</pluginRepositories>

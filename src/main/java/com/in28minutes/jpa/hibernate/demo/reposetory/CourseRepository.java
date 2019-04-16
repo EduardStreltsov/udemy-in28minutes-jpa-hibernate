@@ -45,7 +45,7 @@ public class CourseRepository {
 	public void playWithEM() {
 		Course course = new Course("c1");
 		em.persist(course);
-//		course.setName(null);
+//		course.setNumber(null);
 		logger.info("playWithEM");
 	}
 	
