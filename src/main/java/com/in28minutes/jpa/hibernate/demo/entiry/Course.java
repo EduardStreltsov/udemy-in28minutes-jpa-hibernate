@@ -24,7 +24,7 @@ public class Course {
 	@UpdateTimestamp
 	private LocalDateTime lastUpdatedDate;
 	
-	@OneToMany
+	@OneToMany(mappedBy = "course")
 	private List<Review> reviews = new ArrayList<>();
 	
 	protected Course() {
