@@ -1,6 +1,7 @@
 package com.in28minutes.jpa.hibernate.demo.reposetory;
 
 import com.in28minutes.jpa.hibernate.demo.entiry.Course;
+import com.in28minutes.jpa.hibernate.demo.entiry.Review;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +9,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
+import java.util.List;
 
 @Repository
 public class CourseRepository {
@@ -49,4 +51,34 @@ public class CourseRepository {
 		logger.info("playWithEM");
 	}
 	
+	@Transactional
+	public void addReviewsForCourse() {
+		Course course = findById(3L);
+		logger.info("TEST " + course.getReviews().toString());
+		
+		Review review = new Review("5", "ok");
+		review.setId(4L);
+		Review review2 = new Review("4", "ok ok");
+		review2.setId(5L);
+		
+		course.addReview(review);
+		review.setCourse(course);
+		course.addReview(review2);
+		review2.setCourse(course);
+		
+		em.persist(review);
+		em.persist(review2);
+	}
+	
+	@Transactional
+	public void addReviewsForCourse(Long courseId, List<Review> reviews) {
+		Course course = findById(courseId);
+		logger.info("TEST " + course.getReviews().toString());
+		
+		for (Review review : reviews) {
+			course.addReview(review);
+			review.setCourse(course);
+			em.persist(review);
+		}
+	}
 }
