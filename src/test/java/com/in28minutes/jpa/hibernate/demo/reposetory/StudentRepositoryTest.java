@@ -1,8 +1,8 @@
 package com.in28minutes.jpa.hibernate.demo.reposetory;
 
 import com.in28minutes.jpa.hibernate.demo.DemoApplication;
-import com.in28minutes.jpa.hibernate.demo.entiry.Passport;
-import com.in28minutes.jpa.hibernate.demo.entiry.Student;
+import com.in28minutes.jpa.hibernate.demo.entity.Passport;
+import com.in28minutes.jpa.hibernate.demo.entity.Student;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
@@ -44,6 +44,14 @@ public class StudentRepositoryTest {
 	@Transactional
 	public void someTest() {
 		studentRepository.understandPC();
+	}
+	
+	@Test
+	@Transactional
+	public void retrieveStudentAndCourse() {
+		Student student = em.find(Student.class, 1L);
+		logger.info("test111 " + student.toString());
+		logger.info("test111 " + student.getCourses().toString());
 	}
 	
 

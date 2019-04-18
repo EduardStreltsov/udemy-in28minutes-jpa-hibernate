@@ -1,4 +1,4 @@
-package com.in28minutes.jpa.hibernate.demo.entiry;
+package com.in28minutes.jpa.hibernate.demo.entity;
 
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
@@ -27,7 +27,14 @@ public class Course {
 	@OneToMany(mappedBy = "course")
 	private List<Review> reviews = new ArrayList<>();
 	
+	@ManyToMany(mappedBy = "courses")
+	private List<Student> students = new ArrayList<>();
+	
 	protected Course() {
+	}
+	
+	public void setId(Long id) {
+		this.id = id;
 	}
 	
 	public Course(String name) {
@@ -54,11 +61,23 @@ public class Course {
 		this.reviews.add(review);
 	}
 	
+	public List<Student> getStudents() {
+		return students;
+	}
+	
+	public void setStudents(List<Student> students) {
+		this.students = students;
+	}
+	
 	@Override
 	public String toString() {
 		return "Course{" +
 				       "id=" + id +
 				       ", name='" + name + '\'' +
 				       '}';
+	}
+	
+	public void addStudent(Student student) {
+		students.add(student);
 	}
 }

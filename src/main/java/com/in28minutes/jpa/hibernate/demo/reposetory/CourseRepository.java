@@ -1,7 +1,7 @@
 package com.in28minutes.jpa.hibernate.demo.reposetory;
 
-import com.in28minutes.jpa.hibernate.demo.entiry.Course;
-import com.in28minutes.jpa.hibernate.demo.entiry.Review;
+import com.in28minutes.jpa.hibernate.demo.entity.Course;
+import com.in28minutes.jpa.hibernate.demo.entity.Review;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

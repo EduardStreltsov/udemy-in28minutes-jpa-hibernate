@@ -1,7 +1,7 @@
 package com.in28minutes.jpa.hibernate.demo.reposetory;
 
 import com.in28minutes.jpa.hibernate.demo.DemoApplication;
-import com.in28minutes.jpa.hibernate.demo.entiry.Course;
+import com.in28minutes.jpa.hibernate.demo.entity.Course;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;

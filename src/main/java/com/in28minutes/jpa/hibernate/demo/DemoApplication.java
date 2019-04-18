@@ -1,6 +1,6 @@
 package com.in28minutes.jpa.hibernate.demo;
 
-import com.in28minutes.jpa.hibernate.demo.entiry.Review;
+import com.in28minutes.jpa.hibernate.demo.entity.Review;
 import com.in28minutes.jpa.hibernate.demo.reposetory.CourseRepository;
 import com.in28minutes.jpa.hibernate.demo.reposetory.StudentRepository;
 import org.slf4j.Logger;
@@ -34,13 +34,16 @@ public class DemoApplication implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 		
+		studentRepository.insertStudentAndCourse();
+		if (true) return;
+		
 		Review review = new Review("5", "ok");
 		review.setId(4L);
 		//		Review review2 = new Review("4", "ok ok");
 		List<Review> list = new ArrayList<>();
 		list.add(review);
 		//		list.add(review2);
-		courseRepository.addReviewsForCourse(1L, list);
+		//		courseRepository.addReviewsForCourse(1L, list);
 //		studentRepository.saveStudentWithPassport();
 //		repository.playWithEM();
 //		Course course = repository.findById(1l);

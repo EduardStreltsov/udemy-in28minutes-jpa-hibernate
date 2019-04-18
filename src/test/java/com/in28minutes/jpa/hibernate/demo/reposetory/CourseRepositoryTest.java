@@ -1,7 +1,8 @@
 package com.in28minutes.jpa.hibernate.demo.reposetory;
 
 import com.in28minutes.jpa.hibernate.demo.DemoApplication;
-import com.in28minutes.jpa.hibernate.demo.entiry.Course;
+import com.in28minutes.jpa.hibernate.demo.entity.Course;
+import com.in28minutes.jpa.hibernate.demo.entity.Review;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
@@ -10,6 +11,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.transaction.annotation.Transactional;
+
+import javax.persistence.EntityManager;
 
 import static org.junit.Assert.*;
 
@@ -21,6 +25,9 @@ public class CourseRepositoryTest {
 	
 	@Autowired
 	CourseRepository repository;
+	
+	@Autowired
+	EntityManager em;
 	
 	@Test
 	public void findById_basic() {
@@ -48,13 +55,13 @@ public class CourseRepositoryTest {
 	@DirtiesContext
 	public void save_basic() {
 		
-		Course course = repository.findById(1l);
+		Course course = repository.findById(1L);
 		assertEquals("course1", course.getName());
 		
 		course.setName("course1+");
 		repository.save(course);
 		
-		Course course1 = repository.findById(1l);
+		Course course1 = repository.findById(1L);
 		assertEquals("course1+", course1.getName());
 		
 	}
@@ -64,5 +71,19 @@ public class CourseRepositoryTest {
 	public void   playWithEM() {
 		repository.playWithEM();
 		
+	}
+	
+	@Test
+	@Transactional
+	public void retrieveReviewsForCourse() {
+		Course course = repository.findById(1L);
+		logger.info("test111 " + course.getReviews().toString());
+	}
+	
+	@Test
+	@Transactional
+	public void retrieveCourseForReview() {
+		Review review = em.find(Review.class, 1L);
+		logger.info("test111 " + review.toString());
 	}
 }

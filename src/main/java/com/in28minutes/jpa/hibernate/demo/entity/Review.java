@@ -1,4 +1,4 @@
-package com.in28minutes.jpa.hibernate.demo.entiry;
+package com.in28minutes.jpa.hibernate.demo.entity;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

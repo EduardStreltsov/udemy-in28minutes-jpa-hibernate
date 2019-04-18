@@ -1,7 +1,8 @@
 package com.in28minutes.jpa.hibernate.demo.reposetory;
 
-import com.in28minutes.jpa.hibernate.demo.entiry.Passport;
-import com.in28minutes.jpa.hibernate.demo.entiry.Student;
+import com.in28minutes.jpa.hibernate.demo.entity.Course;
+import com.in28minutes.jpa.hibernate.demo.entity.Passport;
+import com.in28minutes.jpa.hibernate.demo.entity.Student;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -58,6 +59,20 @@ public class StudentRepository {
 		Passport passport = student.getPassport();
 		passport.setNumber("12345");
 		student.setName("Ragul");
+	}
+	
+	@Transactional
+	public void insertStudentAndCourse() {
+		Student student = new Student("insertStudentAndCourse");
+		student.setId(10L);
+		Course course = new Course("insertStudentAndCourse");
+		course.setId(10L);
+		em.persist(course);
+		em.persist(student);
+		
+		student.addCourse(course);
+		course.addStudent(student);
+		//		em.persist(student);
 	}
 	
 }
