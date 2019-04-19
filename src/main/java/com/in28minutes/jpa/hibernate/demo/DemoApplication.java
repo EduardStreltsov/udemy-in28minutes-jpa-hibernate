@@ -1,7 +1,10 @@
 package com.in28minutes.jpa.hibernate.demo;
 
+import com.in28minutes.jpa.hibernate.demo.entity.FullTimeEmployee;
+import com.in28minutes.jpa.hibernate.demo.entity.PartTimeEmployee;
 import com.in28minutes.jpa.hibernate.demo.entity.Review;
 import com.in28minutes.jpa.hibernate.demo.reposetory.CourseRepository;
+import com.in28minutes.jpa.hibernate.demo.reposetory.EmployeeRepository;
 import com.in28minutes.jpa.hibernate.demo.reposetory.StudentRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -11,6 +14,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import javax.persistence.EntityManager;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,6 +27,8 @@ public class DemoApplication implements CommandLineRunner {
 	private StudentRepository studentRepository;
 	@Autowired
 	private CourseRepository courseRepository;
+	@Autowired
+	private EmployeeRepository employeeRepository;
 	
 	@Autowired
 	private EntityManager em;
@@ -34,8 +40,11 @@ public class DemoApplication implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 		
-		studentRepository.insertStudentAndCourse();
+		employeeRepository.insert(new FullTimeEmployee("Joe", new BigDecimal(100)));
+		employeeRepository.insert(new PartTimeEmployee("Ann", new BigDecimal(10)));
+		//		logger.info("test111" + employeeRepository.findAll().toString());
 		if (true) return;
+		studentRepository.insertStudentAndCourse();
 		
 		Review review = new Review("5", "ok");
 		review.setId(4L);
